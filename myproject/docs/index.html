@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        {% load static %}
+        <img src="{% static 'profile.jpg' %}" alt="photo" class="profile-pic">
+        <p>Java | Web Dev | Python</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Emmanuel Mari C. Francisco a starting Web Developer and currently a student that is still learning to improve and meet the requirements that is expected of me.
+            I have a background in java and php (see the my projects) and at the moment learning Django a Web framework
+            that uses python which makes creating Web easier due to how structured and organized it is. 
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+    
+        <div class="project-card">
+            {% load static %}
+            <img src="{% static 'Java.jpg' %}" alt="Java Simple Game" class="project-image" onclick="openLightbox(this)">
+            <h3>Project 1: Java Simple Game</h3>
+            <p>A simple Maze game built using Java.</p>
+        </div>
+    
+        <div class="project-card">
+            {% load static %}
+            <img src="{% static 'Checklist.jpg' %}" alt="Checklist App" class="project-image" onclick="openLightbox(this)">
+            <h3>Project 2: Checklist</h3>
+            <p>A simple checklist to track schedules, professors, subjects and grades.</p>
+        </div>
+    
+        <!-- Lightbox Overlay -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="Expanded Project Image">
+        </div>
+    </section>
+    
+    
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/xgveaewy" method="POST">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    
+</body>
+<script>
+    function openLightbox(image) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+
+        lightboxImage.src = image.src;
+        lightbox.style.display = "flex";
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.style.display = "none";
+    }
+</script>
+</section>
+</html>
